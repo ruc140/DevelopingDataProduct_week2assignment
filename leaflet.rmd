@@ -1,0 +1,36 @@
+---
+title: "Leaflet Assignment"
+author: "Rubing"
+always_allow_html: yes
+---
+
+
+## Jun 28, 2019
+
+Some tourist sites in Chicago
+
+```{r, echo=FALSE}
+library(leaflet)
+chicagoIcon <- makeIcon(
+  iconUrl = "https://cdn.dribbble.com/users/1555045/screenshots/3377067/chicagodribble.png",
+  iconWidth = 31*215/230, iconHeight = 31,
+  iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+chicagoSites <- c(
+  "<a href='https://www.artic.edu/'>Art Institute of Chicago</a>",
+  "<a href='http://www.fieldmuseum.org/'>Field Museum</a>",
+  "<a href='https://www.msichicago.org/'>Museum of Science+Industry Chicago</a>",
+  "<a href='https://www.mcachicago.org/'>Museum of Contemporary Art Chicago</a>"
+)
+chicagoLatLong <- data.frame(
+  lat = c(41.8796, 41.8663, 41.7906, 41.8972),
+  lng = c(-87.6237, -87.6170, -87.5831, -87.6213))
+chicagoLatLong %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(icon = chicagoIcon, popup = chicagoSites)
+```
+
+
+
+
